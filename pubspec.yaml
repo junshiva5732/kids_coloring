@@ -1,0 +1,36 @@
+name: kids_coloring
+description: "색칠 놀이 — 아이들을 위한 탭 색칠 게임. 가족 정책을 따르는 AdMob 광고(배너 / 보상형)."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  google_mobile_ads: ^9.1.0
+  shared_preferences: ^2.5.3
+  flutter_localizations:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.4
+
+flutter:
+  uses-material-design: true
+
+# 앱 아이콘 생성: dart run flutter_launcher_icons
+# 원본 이미지는 tool/make_icon.py 로 생성.
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/icon.png"
+  adaptive_icon_background: "#FFF3D6"
+  adaptive_icon_foreground: "assets/icon/icon_fg.png"
+  adaptive_icon_monochrome: "assets/icon/icon_fg.png"
+  remove_alpha_ios: true
