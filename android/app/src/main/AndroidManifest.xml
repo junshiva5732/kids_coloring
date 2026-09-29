@@ -28,10 +28,10 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <!-- AdMob App ID: 현재 Google 샘플 ID. AdMob 앱 등록 후 교체 -->
+        <!-- AdMob App ID (Coloring Fun, 2026-09-29 발급) -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713"/>
+            android:value="ca-app-pub-7493209423244427~5057544618"/>
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
