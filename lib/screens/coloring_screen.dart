@@ -172,46 +172,52 @@ class _Palette extends StatelessWidget {
       ),
       child: LayoutBuilder(
         builder: (context, box) {
-          const perRow = 9;
-          final d = math.min(52.0, box.maxWidth / perRow - 6);
-          return Wrap(
-            alignment: WrapAlignment.center,
-            spacing: 6,
-            runSpacing: 8,
-            children: [
-              for (final c in palette)
-                GestureDetector(
-                  onTap: () {
-                    HapticFeedback.selectionClick();
-                    onPick(c);
-                  },
-                  child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 150),
-                    width: d,
-                    height: d,
-                    transform: Matrix4.diagonal3Values(c == selected ? 1.15 : 1, c == selected ? 1.15 : 1, 1),
-                    transformAlignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: c,
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: c == selected ? Colors.white : Colors.black26,
-                        width: c == selected ? 4 : 1.5,
+          // 항상 9개씩 2줄. 태블릿에서는 칸을 키운다(최대 72).
+          const perRow = 9, gap = 8.0;
+          final d = math.min(72.0, (box.maxWidth - gap * (perRow - 1)) / perRow - 2);
+          return Center(
+            child: SizedBox(
+              width: perRow * d + (perRow - 1) * gap + 1,
+              child: Wrap(
+                alignment: WrapAlignment.center,
+                spacing: gap,
+                runSpacing: 10,
+                children: [
+                  for (final c in palette)
+                    GestureDetector(
+                      onTap: () {
+                        HapticFeedback.selectionClick();
+                        onPick(c);
+                      },
+                      child: AnimatedContainer(
+                        duration: const Duration(milliseconds: 150),
+                        width: d,
+                        height: d,
+                        transform: Matrix4.diagonal3Values(c == selected ? 1.15 : 1, c == selected ? 1.15 : 1, 1),
+                        transformAlignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: c,
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: c == selected ? Colors.white : Colors.black26,
+                            width: c == selected ? 4 : 1.5,
+                          ),
+                          boxShadow: c == selected
+                              ? const [BoxShadow(color: Color(0x66000000), blurRadius: 8, offset: Offset(0, 2))]
+                              : null,
+                        ),
+                        child: c == selected
+                            ? Icon(
+                                Icons.brush_rounded,
+                                size: d * 0.5,
+                                color: c.computeLuminance() > 0.6 ? Colors.black54 : Colors.white,
+                              )
+                            : null,
                       ),
-                      boxShadow: c == selected
-                          ? const [BoxShadow(color: Color(0x66000000), blurRadius: 8, offset: Offset(0, 2))]
-                          : null,
                     ),
-                    child: c == selected
-                        ? Icon(
-                            Icons.brush_rounded,
-                            size: d * 0.5,
-                            color: c.computeLuminance() > 0.6 ? Colors.black54 : Colors.white,
-                          )
-                        : null,
-                  ),
-                ),
-            ],
+                ],
+              ),
+            ),
           );
         },
       ),

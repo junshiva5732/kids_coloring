@@ -39,8 +39,9 @@ class GalleryScreen extends StatelessWidget {
               ),
               SliverPadding(
                 padding: const EdgeInsets.symmetric(horizontal: 12),
-                sliver: SliverGrid.count(
-                  crossAxisCount: 2,
+                // 폰은 2열, 태블릿(800dp)은 3~4열: 칸 최대 너비 기준.
+                sliver: SliverGrid.extent(
+                  maxCrossAxisExtent: 240,
                   mainAxisSpacing: 12,
                   crossAxisSpacing: 12,
                   children: [for (final p in pictures.where((p) => p.pack == pack)) _Thumb(store: store, picture: p)],
