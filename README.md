@@ -66,15 +66,17 @@ flutter build apk --debug --target-platform android-x64
 ## 출시 체크리스트
 
 ### 1. AdMob
-- [ ] Android 앱 "Coloring Fun" 등록, 앱 설정에서 아동 대상 지정
-- [ ] 광고 단위: 배너 / 보상형
-- [ ] `lib/ads/ad_ids.dart` `_androidReal`, `AndroidManifest.xml` `APPLICATION_ID` 교체 (지금은 테스트/샘플 ID)
+- [x] Android 앱 "Coloring Fun" 등록, 앱 설정에서 아동 대상 지정
+- [x] 광고 단위: 배너 / 보상형
+- [x] `lib/ads/ad_ids.dart` `_androidReal`, `AndroidManifest.xml` `APPLICATION_ID` 교체
 
 ### 2. 개인정보 / 정책
-- [ ] GitHub 저장소(공개) + Pages(`main` / `/docs`) 로 `docs/privacy-policy.html` 게시
-- [ ] Play Console: 타겟층(5세 이하 · 6~8세 등), 광고 있음, 데이터 보안(광고 ID 수집 안 함), 콘텐츠 등급
+- [x] GitHub 저장소(공개) + Pages(`main` / `/docs`) 로 `docs/privacy-policy.html` 게시
+- [x] Play Console: 타겟층(5세 이하 · 6~8세 등), 광고 있음, 데이터 보안(광고 ID 수집 안 함), 콘텐츠 등급
 
 ### 3. Google Play
 - [x] 업로드 키 `android/upload-keystore.jks` + `android/key.properties` — git 제외, **따로 백업 필수**
 - [x] `flutter build appbundle --release` (50.5MB, targetSdk 36)
-- [ ] 스토어 그래픽·등록정보, 내부 테스트 → 비공개 테스트(12명 × 14일) → 프로덕션
+- [x] 스토어 등록정보 en-US + ko-KR (그래픽·스크린샷 01→04), 내부 테스트 1.0.0
+- [x] 비공개 테스트 Alpha (전체 국가, Internal testers + 오늘의 운세 테스터) 1.0.0 — 2026-09-30 검토 제출
+- [ ] 12명 × 14일 테스트 → 프로덕션 신청
